@@ -1,0 +1,19 @@
+===============================================================================
+
+    @author: Thomas Bolden
+    @date:   April 13, 2017
+    @scope:  .
+
+===============================================================================
+
+This is a file containing the different naming schemes for bonds and unique 
+moecular structures to represent them in a text file that is legible by the
+script `molecule_render_blender.py'
+
+===============================================================================
+
+Single Bonds    .
+Double Bonds    .
+Triple Bonds    .
+
+All atoms are recognized by their 
