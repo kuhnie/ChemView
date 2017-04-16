@@ -35,6 +35,13 @@ import math
 
 from periodic_table import *
 
+from structure_defines import add_atom, \
+                              single_bond, \
+                              double_bond, \
+                              triple_bond, \
+                              aromatic_ring, \
+                              whatever_c_is
+
 # scipy or numpy?
 
 #=============================================================================#
@@ -44,6 +51,8 @@ from periodic_table import *
 molecule_file = "path/to/molecule/file"
 
 #=============================================================================#
+
+# should add bond_map {"1": single, "A": aromatics}
 
 # Mapping the first 103 elements from string to corresponding element object.
 # To access object attributes of say, helium, something like this shoud work:
@@ -181,18 +190,53 @@ print(x.name(), "molar mass: ", x.mass())
 #=============================================================================#
 
 def decode_cml_file(filename):
+
 	'''
-	A typical CML file is of the following format:
-	<molecule titel="name" ...>
-	  <atomArray>
-	    <atom id="a1" elementType="C" x3="-1.3961" y3="0.0013" z3="-0.0504"/>
-	    ...
-	    ...
-	  </atomArray>
-	</molecule>
+	This is a hacky function to read strictly formatted .cml files
+
+	I am not entirely familiar with the possible variations 
+	in .cml files, so apologies if it breaks
+
+	The function takes the path to the .cml file
+
+	The function returns two lists:
+		- a list of 3-tuples for each atom: (atom id, element, 3D location)
+		- a list of 3-tuples for each bond: (atom id 1, atom id 2, type)
 	'''
 
-	return "broken"
+	atom_line = "<atom "
+
+	bond_line = "<bond "
+
+	atoms = [] # (str_id, str_element, float_(x,y,z))
+
+	bonds = [] # (str_id1, str_id2, str_type)
+
+	f = open(filename, 'r')
+
+	for line in f:
+
+		line = line.strip()
+
+		if line.startswith(atom_line): 
+
+			a, a_id, el, x, y, z = line.split()
+
+			atoms.append((a_id[4:-1],
+				          el[13:-1],
+				         (float(x[4:-1]),
+                          float(y[4:-1]),
+                          float(z[4:-3]))))
+
+		elif line.startswith(bond_line):
+
+			b, a_id_1, a_id_2, order = line.split()
+
+			bonds.append((a_id_1[11:],
+                          a_id_2[:-1],
+                          order[7:-3]))
+
+	return atoms, bonds
 
 
 

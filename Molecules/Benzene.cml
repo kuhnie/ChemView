@@ -1,6 +1,4 @@
-<molecule title="benzene.mol" xmlns="http://www.xml-cml.org/schema/cml2/core"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.xml-cml.org/schema/cml2/core cmlAll.xsd">
+<molecule title="benzene.mol">
   <atomArray>
     <atom id="a1" elementType="C" x3="-1.3961" y3="0.0013" z3="-0.0504"/>
     <atom id="a2" elementType="C" x3="-0.7402" y3="-0.3516" z3="1.1313"/>
