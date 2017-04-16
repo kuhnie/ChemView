@@ -24,17 +24,24 @@
 #
 #    Atoms should be UV spheres
 #
+#    EVENTUALLY want to be able to save blender file in unity scene or
+#    at least in the folder where assets are stored
+#
 #=============================================================================#
 
-import bpy
+#import bpy
 
 import math
-
-import numpy as np
 
 from periodic_table import *
 
 # scipy or numpy?
+
+#=============================================================================#
+
+# can download some samples from here: 
+# https://github.com/cryos/avogadro/tree/master/fragments
+molecule_file = "path/to/molecule/file"
 
 #=============================================================================#
 
@@ -144,17 +151,48 @@ element_str_map = {"H"  : H,
                    "Fm" : Fm,
                    "Md" : Md,
                    "No" : No,
-                   "Lr" : Lr}
+                   "Lr" : Lr,
+                  }
 
 #=============================================================================#
 
+in_el = "Ag" #input("Enter an element: ")
 
+x = element_str_map[in_el]
+
+print(x.name(), "molar mass: ", x.mass())
 
 #=============================================================================#
-
-
-
+#
+#    https://en.wikipedia.org/wiki/CPK_coloring
+#
+#    pt_hydrogen - WHITE
+#    pt_alkali_metals - VIOLET
+#    pt_alkaline_earth_metals - DARK GREEN
+#    pt_metalloids - PEACH
+#    pt_nonmetals - BLACK (C), SKY BLUE (O), RED (N), ORANGE (P), YELLOW (S, Se)
+#    pt_halogens - LIME GREEN
+#    pt_noble_gases - CYAN
+#    pt_transition_metals - SALMON 
+#    pt_post_transition_metals - GRAY
+#    pt_lanthanoids - PINK
+#    pt_actinoids - PINK
+#
 #=============================================================================#
+
+def decode_cml_file(filename):
+	'''
+	A typical CML file is of the following format:
+	<molecule titel="name" ...>
+	  <atomArray>
+	    <atom id="a1" elementType="C" x3="-1.3961" y3="0.0013" z3="-0.0504"/>
+	    ...
+	    ...
+	  </atomArray>
+	</molecule>
+	'''
+
+	return "broken"
 
 
 

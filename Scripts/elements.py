@@ -6,30 +6,30 @@
 
 class element(object):
 
-	def __init__(self, name="", mass=0.0, radius=0, vse=0):
-		''' Initialize elements with their properties '''
-		self.__name   = name
-		self.__mass   = mass
-		self.__radius = radius # radii are in picometers
+    def __init__(self, name="", mass=0.0, radius=0, vse=0):
+        ''' Initialize elements with their properties '''
+        self.__name   = name
+        self.__mass   = mass
+        self.__radius = radius # radii are in picometers
         self.__vse    = vse # valence shell electrons
 
-	def name(self):
-		''' . '''
-		return self.__name
+    def name(self):
+        ''' . '''
+        return self.__name
 
-	def mass(self):
-		''' . '''
-		return self.__mass
+    def mass(self):
+        ''' . '''
+        return self.__mass
 
-	def radius(self):
-		''' . '''
-		return self.__radius
+    def radius(self):
+        ''' . '''
+        return self.__radius
 
     def vse(self):
         ''' . '''
         return self.__vse
 
-	# the comparisons are with mass and not the name 
+    # the comparisons are with mass and not the name 
 
     def __eq__(self, other):
         ''' Return True if elements are same. '''

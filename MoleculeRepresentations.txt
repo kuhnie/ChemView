@@ -12,6 +12,8 @@ script `molecule_render_blender.py'
 
 ===============================================================================
 
+https://en.wikipedia.org/wiki/Chemical_file_format
+
 SYBYL < https://en.wikipedia.org/wiki/SYBYL_Line_Notation >
 SMILES < https://en.wikipedia.org/wiki/Simplified_molecular_input_line_entry_specification >
 XYZ < https://en.wikipedia.org/wiki/XYZ_file_format >

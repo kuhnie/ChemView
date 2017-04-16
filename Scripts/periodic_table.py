@@ -4,13 +4,13 @@
 #
 #=============================================================================#
 
-import elements
+from elements import element
 
 # sorted by group for coloring reasons
 # radii are calculated unless unknown, then emperical, then made up
 
 # Hydrogen
-H  = element("Hydrogen",     1.008000, 53)
+H  = element("Hydrogen",     1.008000, 53,  1)
 
 pt_hydrogen = [H]
 
@@ -20,7 +20,7 @@ Na = element("Sodium",       22.98976, 190, 1)
 K  = element("Potassium",    39.09830, 243, 1)
 Rb = element("Rubidium",     85.46780, 265, 1)
 Cs = element("Caesium",      132.9054, 298, 1)
-Fr = element("Francium",     223.0000, 1,   1) # emperical radius
+Fr = element("Francium",     223.0000, 320, 1) # made up radius
 
 pt_alkali_metals = [Li, Na, K, Rb, Cs, Fr]
 
@@ -30,7 +30,7 @@ Mg = element("Magnesium",    24.30500, 145, 2)
 Ca = element("Calcium",      40.07800, 194, 2)
 Sr = element("Strontium",    87.62000, 219, 2)
 Ba = element("Barium",       137.3270, 253, 2)
-Ra = element("Radium",       226.0000, 1,   2) # emperical radius
+Ra = element("Radium",       226.0000, 275, 2) # made up radius
 
 pt_alkaline_earth_metals = [Be, Mg, Ca, Sr, Ba, Ra]
 
@@ -157,3 +157,8 @@ No = element("Nobelium",     259.0000, 163, 8) # made up radius
 Lr = element("Lawrencium",   262.0000, 170, 1) # made up radius
 
 pt_actinoids = [Ac, Th, Pa, U, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr]
+
+# TESTING
+#for x in pt_halogens:
+#    print(x.name(), " molar mass: ", x.mass())
+

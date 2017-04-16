@@ -17,14 +17,47 @@
 #
 #=============================================================================#
 
+import bpy
 
+from elements import element
+
+from periodic_table import *
 
 def decode_bonds(self):
-	return pass
+	pass
 
 def get_atoms(self):
 	'''
-	should return a list of atoms
+	should return a list of atoms in the molecule with their locations?
 	'''
-	return pass
+	pass
+
+
+
+def single_bond(length):
+    pass
+
+def double_bond(length):
+	pass
+
+def triple_bond(length):
+	pass
+
+def molecule(name, r):
+	pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
