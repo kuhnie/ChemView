@@ -53,9 +53,9 @@ def decode_cml_file(filename):
 
 	bond_line = "<bond "
 
-	atoms = [] # (str_id, str_element, float_(x,y,z))
+	atoms = {} # (str id: str element, float (x,y,z))
 
-	bonds = [] # (str_id1, str_id2, str_type)
+	bonds = [] # (str id1, str id2, str type)
 
 	f = open(filename, 'r')
 
@@ -67,11 +67,16 @@ def decode_cml_file(filename):
 
 			a, a_id, el, x, y, z = line.split()
 
-			atoms.append((a_id[4:-1],
-				          el[13:-1],
-				         (float(x[4:-1]),
-                          float(y[4:-1]),
-                          float(z[4:-3]))))
+			atoms[a_id[4:-1]] = (el[13:-1],
+				                (float(x[4:-1]),
+                                 float(y[4:-1]),
+                                 float(z[4:-3])))
+
+			#atoms.append((a_id[4:-1],
+			#	          el[13:-1],
+			#	         (float(x[4:-1]),
+            #              float(y[4:-1]),
+            #              float(z[4:-3]))))
 
 		elif line.startswith(bond_line):
 
@@ -81,7 +86,16 @@ def decode_cml_file(filename):
                           a_id_2[:-1],
                           order[7:-3]))
 
+	#atoms_dict = {a:(b,c) for a, b, c in atoms}
+
+	#print(atoms)
+
+	print(atoms['a1'])
+
+	#print(bonds)
+
 	return atoms, bonds
+
 
 #tree = etree.parse(cml_file).getroot()
 

@@ -35,12 +35,13 @@ import math
 
 from periodic_table import *
 
-from structure_defines import add_atom, \
-                              single_bond, \
-                              double_bond, \
-                              triple_bond, \
-                              aromatic_ring, \
-                              whatever_c_is
+from structure_defines import *
+                             # add_atom, \
+                             # single_bond, \
+                             # double_bond, \
+                             # triple_bond, \
+                             # aromatic_ring, \
+                             # whatever_c_is
 
 # scipy or numpy?
 
@@ -199,8 +200,8 @@ def decode_cml_file(filename):
 
 	The function takes the path to the .cml file
 
-	The function returns two lists:
-		- a list of 3-tuples for each atom: (atom id, element, 3D location)
+	The function has two returns:
+		- a dict for each atom: {atom id: (element, 3D location)}
 		- a list of 3-tuples for each bond: (atom id 1, atom id 2, type)
 	'''
 
@@ -208,9 +209,9 @@ def decode_cml_file(filename):
 
 	bond_line = "<bond "
 
-	atoms = [] # (str_id, str_element, float_(x,y,z))
+	atoms = {} # {str id: (str element, float (x,y,z))}
 
-	bonds = [] # (str_id1, str_id2, str_type)
+	bonds = [] # (str id1, str id2, str type)
 
 	f = open(filename, 'r')
 
@@ -222,11 +223,10 @@ def decode_cml_file(filename):
 
 			a, a_id, el, x, y, z = line.split()
 
-			atoms.append((a_id[4:-1],
-				          el[13:-1],
-				         (float(x[4:-1]),
-                          float(y[4:-1]),
-                          float(z[4:-3]))))
+			atoms[a_id[4:-1]] = (el[13:-1],
+				                (float(x[4:-1]),
+                                 float(y[4:-1]),
+                                 float(z[4:-3])))
 
 		elif line.startswith(bond_line):
 
@@ -238,6 +238,15 @@ def decode_cml_file(filename):
 
 	return atoms, bonds
 
+#=============================================================================#
+#
+#    do I need to move the functions in structure_defines to here?
+#
+#=============================================================================#
+
+
+
+#=============================================================================#
 
 
 
@@ -251,14 +260,7 @@ def decode_cml_file(filename):
 
 
 
-
-
-
-
-
-
-
-
+#=============================================================================#
 
 
 

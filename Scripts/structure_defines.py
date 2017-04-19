@@ -19,9 +19,9 @@
 
 #import bpy
 
-from elements import element
+#from elements import element
 
-from periodic_table import *
+#from periodic_table import *
 
 def decode_bonds(self):
 	pass
@@ -33,7 +33,7 @@ def get_atoms(self):
 	pass
 
 # this function places a double bond where it should be
-def add_atom(location):
+def add_atom(type, location):
 	pass
 
 # these functions place bonds where they should be -- toy with the parameters
