@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.IO;
+using System.Linq;
 
 //---------------------------------------------------------------------------\\
 
@@ -29,6 +30,8 @@ public class LoadCmlData : MonoBehaviour {
     // { "Ag" : (1.0, 2.0, 1.0) }
     List<Dictionary<string,Vector3>> atomArray
         = new List<Dictionary<string,Vector3>>(); // or <Element, Vector3> ?
+    // TODO: consider changing this to dict like so:
+    // { "ref number" : ("type", (x,y,z) ) }
     
     // bondArray is a list of all the bonds where each entry looks like
     // { "bond order" : "atom1 atom2" }
@@ -53,7 +56,8 @@ public class LoadCmlData : MonoBehaviour {
 
             tempDictA = new Dictionary<string,Vector3>();
 
-            tempDictA.Add(atom.Attributes["elementType"].Value,
+            tempDictA.Add(atom.Attributes["elementType"].Value
+                          + atom.Attributes["id"].Value,
                           new Vector3(float.Parse(atom.Attributes["x3"].Value),
                                       float.Parse(atom.Attributes["y3"].Value),
                                       float.Parse(atom.Attributes["z3"].Value)));
@@ -76,10 +80,30 @@ public class LoadCmlData : MonoBehaviour {
 
     }
 
+    // MOVE THIS LATER !!
     public void Generate(){
 
         // tempDictA - atoms { string : Vector3 }
         // tempDictB - bonds { string : string }
+
+        for(int i = 0; i < atomArray.Count; i++){
+
+            GameObject current = 
+                GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+            // set position of the atom    
+            current.transform.position = atomArray[i].First().Value;
+
+            if(atomArray[i].First().Key.StartsWith("C"))
+                current.GetComponent<Renderer>().material.color = Color.black;
+            
+            else if(atomArray[i].First().Key.StartsWith("O"))
+                current.GetComponent<Renderer>().material.color = Color.cyan;
+            
+
+            // add more to change shape and color, etc.
+
+        }
 
     }
 

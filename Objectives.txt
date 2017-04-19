@@ -1,0 +1,6 @@
+1.  File dialog to pick molecule file
+2.  Read file and decode
+    - atom positions
+    - bond positions and directions
+3.  Scale molecule to half VR box size
+4.  Instantiate sphere for atoms, capsules for bonds
