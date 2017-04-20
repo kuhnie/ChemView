@@ -50,7 +50,10 @@
      <Compile Include="Assets\_Scripts\LoadCmlData.cs" />
      <Compile Include="Assets\_Scripts\Molecule.cs" />
      <Compile Include="Assets\_Scripts\Rotator.cs" />
+     <None Include="Assets\_Data_Files\D-cysteine.txt" />
+     <None Include="Assets\_Data_Files\9H-fluorene.txt" />
      <None Include="Assets\_Data_Files\Benzene.txt" />
+     <None Include="Assets\_Data_Files\caffeine.txt" />
      <None Include="Assets\_Data_Files\D-Glucose.txt" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
