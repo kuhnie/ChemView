@@ -28,19 +28,25 @@ public class LoadCmlData : MonoBehaviour {
     // the order of atomArray is same as order in cml file, so index in the
     // list will reference the atom (eg. atom a2 is second in list)
     // { "Ag" : (1.0, 2.0, 1.0) }
-    List<Dictionary<string,Vector3>> atomArray
-        = new List<Dictionary<string,Vector3>>(); // or <Element, Vector3> ?
-    // TODO: consider changing this to dict like so:
-    // { "ref number" : ("type", (x,y,z) ) }
+
+    // atomPosAry is a list of positions of each atom in the molecule
+    // mapping the position of the atom based 
+    List<Vector3> atomPosAry 
+        = new List<Vector3>();
+
+    List<Dictionary<string,string>> atomTypeDict 
+        = new List<Dictionary<string,string>>();
     
     // bondArray is a list of all the bonds where each entry looks like
-    // { "bond order" : "atom1 atom2" }
-    List<Dictionary<string,string>> bondArray 
-        = new List<Dictionary<string,string>>();
+    // { ["atom_id1","atom_id2"] : "bond_order" }
+    List<Dictionary<List<string>,string>> bondArray 
+        = new List<Dictionary<List<string>,string>>();
 
     // temporary dictionaries for atoms and bonds, respectively
-    Dictionary<string,Vector3> tempDictA;
-    Dictionary<string,string> tempDictB;
+    Dictionary<string,string> tempDictA;
+
+    Dictionary<List<string>,string> tempDictB;
+    List<string> tempListB;
 
     public void Read() {
 
@@ -54,25 +60,31 @@ public class LoadCmlData : MonoBehaviour {
         // atoms should now be everything tagged "atom"
         foreach(XmlNode atom in atoms){
 
-            tempDictA = new Dictionary<string,Vector3>();
+            tempDictA = new Dictionary<string,string>();
+            tempDictA.Add(atom.Attributes["id"].Value,
+                          atom.Attributes["elementType"].Value);
 
-            tempDictA.Add(atom.Attributes["elementType"].Value
-                          + atom.Attributes["id"].Value,
-                          new Vector3(float.Parse(atom.Attributes["x3"].Value),
-                                      float.Parse(atom.Attributes["y3"].Value),
-                                      float.Parse(atom.Attributes["z3"].Value)));
+            atomPosAry.Add(new Vector3(float.Parse(atom.Attributes["x3"].Value),
+                                       float.Parse(atom.Attributes["y3"].Value),
+                                       float.Parse(atom.Attributes["z3"].Value)));
 
-            atomArray.Add(tempDictA);
+            atomTypeDict.Add(tempDictA);
     
         }
 
         // bonds is a list of everything tagged "bond"
         foreach(XmlNode bond in bonds){
 
-            tempDictB = new Dictionary<string,string>();
+            tempDictB = new Dictionary<List<string>,string>();
 
-            tempDictB.Add(bond.Attributes["order"].Value,
-                          bond.Attributes["atomRefs2"].Value);
+            tempListB = new List<string>();
+
+            string[] atomRefs = bond.Attributes["atomRefs2"].Value.Split(null);
+
+            tempListB.Add(atomRefs[0]);
+            tempListB.Add(atomRefs[1]);
+
+            tempDictB.Add(tempListB, bond.Attributes["order"].Value);
 
             bondArray.Add(tempDictB);
 
@@ -86,22 +98,44 @@ public class LoadCmlData : MonoBehaviour {
         // tempDictA - atoms { string : Vector3 }
         // tempDictB - bonds { string : string }
 
-        for(int i = 0; i < atomArray.Count; i++){
+        // generate atoms
+        for(int i = 0; i < atomPosAry.Count; i++){
 
+            // TODO: replace with spawning a prefab
+            // TODO: make these children of an empty 
+            //       so it can all rotate together!
             GameObject current = 
                 GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
             // set position of the atom    
-            current.transform.position = atomArray[i].First().Value;
+            current.transform.position = atomPosAry[i];
 
-            if(atomArray[i].First().Key.StartsWith("C"))
+            if(atomTypeDict[i].First().Value == "C")
                 current.GetComponent<Renderer>().material.color = Color.black;
             
-            else if(atomArray[i].First().Key.StartsWith("O"))
+            else if(atomTypeDict[i].First().Value == "O")
                 current.GetComponent<Renderer>().material.color = Color.cyan;
+
+            else if(atomTypeDict[i].First().Value == "H")
+                current.GetComponent<Renderer>().material.color = Color.white;
             
 
             // add more to change shape and color, etc.
+
+        }
+
+        // generate bonds
+        for(int j = 0; j < bondArray.Count; j++){
+
+            //
+            string atom1 = bondArray[j].First().Key[0];
+            string atom2 = bondArray[j].First().Key[1];
+
+            //Vector3 atom1loc =
+
+            //Debug.Log(atom1);
+            
+            //float length = (atomArray)
 
         }
 
