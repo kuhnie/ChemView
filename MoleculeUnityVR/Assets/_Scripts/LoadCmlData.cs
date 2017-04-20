@@ -108,6 +108,8 @@ public class LoadCmlData : MonoBehaviour {
         // generate atoms in unity
         for(int i = 0; i < atomPosDict.Count; i++){
 
+            // TODO: make this better for different keys,
+            //   OR: make other files use this format as key
             string key = "a" + (i+1).ToString();
 
             // TODO: replace with spawning a prefab
