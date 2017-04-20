@@ -49,6 +49,7 @@
      <Compile Include="Assets\_Scripts\GenerateMolecule.cs" />
      <Compile Include="Assets\_Scripts\LoadCmlData.cs" />
      <Compile Include="Assets\_Scripts\Molecule.cs" />
+     <Compile Include="Assets\_Scripts\Rotator.cs" />
      <None Include="Assets\_Data_Files\Benzene.txt" />
      <None Include="Assets\_Data_Files\D-Glucose.txt" />
  <Reference Include="UnityEngine.Analytics">
