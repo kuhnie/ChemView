@@ -4,3 +4,7 @@
     - bond positions and directions
 3.  Scale molecule to half VR box size
 4.  Instantiate sphere for atoms, capsules for bonds
+
+EXTRAS
+
+5.  Export a file as model for 3d printing
