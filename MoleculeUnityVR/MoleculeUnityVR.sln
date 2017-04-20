@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{DDC7866B-E2E1-2F4A-6B2F-8EB8133A34B8}") = "MoleculeUnityVR", "Assembly-CSharp.csproj", "{3A36F49A-6A5A-89ED-1002-07A4DE7EF920}"
 EndProject
+Project("{DDC7866B-E2E1-2F4A-6B2F-8EB8133A34B8}") = "MoleculeUnityVR", "Assembly-CSharp-Editor.csproj", "{199F6799-79A8-C421-B9D6-3EC8930FF157}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{3A36F49A-6A5A-89ED-1002-07A4DE7EF920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A36F49A-6A5A-89ED-1002-07A4DE7EF920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A36F49A-6A5A-89ED-1002-07A4DE7EF920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{199F6799-79A8-C421-B9D6-3EC8930FF157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199F6799-79A8-C421-B9D6-3EC8930FF157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199F6799-79A8-C421-B9D6-3EC8930FF157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199F6799-79A8-C421-B9D6-3EC8930FF157}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

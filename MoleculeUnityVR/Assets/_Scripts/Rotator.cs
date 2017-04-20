@@ -1,5 +1,14 @@
+/// @file    Rotator.cs
+/// @author  Thomas Bolden (boldenth@msu.edu)
+/// @date    Wed Apr 19 21:20:00 EST 2017
+/// @brief   Implimenting Rotator class
+///
+/// Attach to any gameobject to make it rotate with cursor
+
 using UnityEngine;
 using System.Collections;
+
+//---------------------------------------------------------------------------\\
  
 public class Rotator : MonoBehaviour {
 
@@ -14,6 +23,7 @@ public class Rotator : MonoBehaviour {
     // TODO: add VR
     // in VR, this should somehow work with the VR sticks/controllers
     // how much of this needs to change for that to work??
+    // TODO: get meshcollider to cover whole molecule so can use OnMouseDrag
     void Update(){
 
         // allows person to click anywhere and drag the object with
