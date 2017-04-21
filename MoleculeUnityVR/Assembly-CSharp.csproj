@@ -140,6 +140,7 @@
      <None Include="Assets\_Data_Files\D-cysteine.txt" />
      <None Include="Assets\_Data_Files\9H-fluorene.txt" />
      <None Include="Assets\_Data_Files\Benzene.txt" />
+     <None Include="Assets\_Data_Files\TestMolecule.txt" />
      <None Include="Assets\_Data_Files\caffeine.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />

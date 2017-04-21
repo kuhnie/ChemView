@@ -176,7 +176,7 @@ print(x.name(), "molar mass: ", x.mass())
 #
 #    https://en.wikipedia.org/wiki/CPK_coloring
 #
-#    pt_hydrogen - WHITE
+#    x pt_hydrogen - WHITE
 #    pt_alkali_metals - VIOLET
 #    pt_alkaline_earth_metals - DARK GREEN
 #    pt_metalloids - PEACH
