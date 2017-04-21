@@ -142,6 +142,7 @@
      <None Include="Assets\_Data_Files\Benzene.txt" />
      <None Include="Assets\_Data_Files\TestMolecule.txt" />
      <None Include="Assets\_Data_Files\caffeine.txt" />
+     <None Include="Assets\_Data_Files\Cholesterol.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
      <None Include="Assets\SteamVR\readme.txt" />

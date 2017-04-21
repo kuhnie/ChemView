@@ -30,6 +30,7 @@ public class GenerateMolecule : MonoBehaviour {
 
         GameObject molecule = new GameObject();
 
+        // TODO: fix this -- see Cholesterol molecule example, off scale
         molecule.transform.localScale = new Vector3(1f,1f,1f);
 
         molecule.name = NAME;
@@ -64,8 +65,7 @@ public class GenerateMolecule : MonoBehaviour {
             PeriodicTable.Element el 
                 = GetComponent<PeriodicTable>().elementMap[ATD[key]];
 
-            //Debug.Log(el.name_);
-
+            // for the radius of the sphere
             float scale = (float)el.radius_ / 100f;
 
             if     (el.group_ == 0){ // Hydrogen - WHITE
@@ -160,25 +160,6 @@ public class GenerateMolecule : MonoBehaviour {
                     = new Color32(255, 20, 147, 255);
                 current.transform.localScale = new Vector3(scale,scale,scale);
             }
-
-            // TODO: make this better!
-            // HINT: create an element class with radius and color attributes 
-            //       and use it to set current.transform{scale,material.color}
-            
-            /*if(ATD[key] == "C"){
-                current.GetComponent<Renderer>().material.color = Color.black;
-                current.transform.localScale = new Vector3(.8f,.8f,.8f);
-            }
-            
-            else if(ATD[key] == "O"){
-                current.GetComponent<Renderer>().material.color = Color.cyan;
-                current.transform.localScale = new Vector3(1f,1f,1f);
-            }
-
-            else if(ATD[key] == "H"){
-                current.GetComponent<Renderer>().material.color = Color.white;
-                current.transform.localScale = new Vector3(.5f,.5f,.5f);
-            }*/
 
         }
 
