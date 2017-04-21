@@ -57,6 +57,7 @@
      <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
      <None Include="Assets\_Data_Files\D-cysteine.txt" />
      <None Include="Assets\_Data_Files\9H-fluorene.txt" />
+     <None Include="Assets\_Data_Files\porphin.txt" />
      <None Include="Assets\_Data_Files\Benzene.txt" />
      <None Include="Assets\_Data_Files\TestMolecule.txt" />
      <None Include="Assets\_Data_Files\caffeine.txt" />

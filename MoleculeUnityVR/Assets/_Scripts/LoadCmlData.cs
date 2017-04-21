@@ -58,15 +58,15 @@ public class LoadCmlData : MonoBehaviour {
 
         //moleculeName = CMLfile.GetElementsByTagName("name").InnerText;
 
-        XmlNodeList names = CMLfile.GetElementsByTagName("name");
+        //XmlNodeList names = CMLfile.GetElementsByTagName("name");
         XmlNodeList atoms = CMLfile.GetElementsByTagName("atom");
         XmlNodeList bonds = CMLfile.GetElementsByTagName("bond");
 
-        foreach(XmlNode name in names){
+        //foreach(XmlNode name in names){
 
-            moleculeName = name.InnerText;
+        //    moleculeName = name.InnerText;
 
-        }
+        //}
 
         // atoms should now be everything tagged "atom"
         foreach(XmlNode atom in atoms){
@@ -107,6 +107,7 @@ public class LoadCmlData : MonoBehaviour {
     //       game start (one option, open to suggestions)
     void Start(){
 
+        GetComponent<PeriodicTable>().CreateTable();
         Read();
         GetComponent<GenerateMolecule>().
         Generate(atomPosDict, atomTypeDict, bondArray, moleculeName);

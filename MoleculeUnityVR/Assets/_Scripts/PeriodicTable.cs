@@ -295,10 +295,4 @@ public class PeriodicTable : MonoBehaviour {
 
     }
 
-    void Start(){
-
-        CreateTable();
-
-    }
-
 }
