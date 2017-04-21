@@ -58,15 +58,13 @@ public class LoadCmlData : MonoBehaviour {
 
         //moleculeName = CMLfile.GetElementsByTagName("name").InnerText;
 
-        //XmlNodeList names = CMLfile.GetElementsByTagName("name");
+        XmlNodeList names = CMLfile.GetElementsByTagName("name");
         XmlNodeList atoms = CMLfile.GetElementsByTagName("atom");
         XmlNodeList bonds = CMLfile.GetElementsByTagName("bond");
 
-        //foreach(XmlNode name in names){
-
-        //    moleculeName = name.InnerText;
-
-        //}
+        foreach(XmlNode name in names){
+            moleculeName = name.InnerText;
+        }
 
         // atoms should now be everything tagged "atom"
         foreach(XmlNode atom in atoms){
