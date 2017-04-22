@@ -72,12 +72,6 @@ def decode_cml_file(filename):
                                  float(y[4:-1]),
                                  float(z[4:-3])))
 
-			#atoms.append((a_id[4:-1],
-			#	          el[13:-1],
-			#	         (float(x[4:-1]),
-            #              float(y[4:-1]),
-            #              float(z[4:-3]))))
-
 		elif line.startswith(bond_line):
 
 			b, a_id_1, a_id_2, order = line.split()
@@ -85,14 +79,6 @@ def decode_cml_file(filename):
 			bonds.append((a_id_1[11:],
                           a_id_2[:-1],
                           order[7:-3]))
-
-	#atoms_dict = {a:(b,c) for a, b, c in atoms}
-
-	#print(atoms)
-
-	print(atoms['a1'])
-
-	#print(bonds)
 
 	return atoms, bonds
 

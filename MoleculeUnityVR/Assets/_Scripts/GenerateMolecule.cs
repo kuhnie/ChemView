@@ -71,25 +71,29 @@ public class GenerateMolecule : MonoBehaviour {
             if     (el.group_ == 0){ // Hydrogen - WHITE
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(255, 255, 255, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 1){ // Alkali Metals - VIOLET
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(138, 43, 226, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 2){ // Alkaline Earth Metals - DARK GREEN
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(0, 119, 13, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 3){ // Metalloids - PEACH
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(255, 218, 185, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 4){ // Misc. nonmetals - Varying
@@ -134,31 +138,36 @@ public class GenerateMolecule : MonoBehaviour {
             else if(el.group_ == 5){ // Transition Metals - SALMON
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(250, 128, 114, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 6){ // Post-Transition Metals - GRAY
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(112, 128, 144, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 7){ // Halogens - LIME GREEN 
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(0, 255, 0, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 8){ // Noble Gases - CYAN
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(0, 255, 255, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
             else if(el.group_ == 9 || el.group_ == 10){ // *noids - PINK
                 current.GetComponent<Renderer>().material.color 
                     = new Color32(255, 20, 147, 255);
-                current.transform.localScale = new Vector3(scale,scale,scale);
+                current.transform.localScale 
+                    = new Vector3(scale,scale,scale);
             }
 
         }
