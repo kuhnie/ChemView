@@ -27,7 +27,7 @@ public class LoadCmlData : MonoBehaviour {
 
     static string ElementText; // eventually to be used for popup dialog
 
-    public string moleculeName = "Molecule"; // TODO: change to customizable!
+    string moleculeName = "Molecule"; // TODO: change to customizable!
                                              // or read from cml
 
     // atomPosDict is a dict of all atoms in the molecule

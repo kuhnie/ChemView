@@ -24,22 +24,10 @@ public class LoadPdbData : MonoBehaviour
 
     public string path;
 
-    // atomArray is a list of atoms in the molecule mapping the abbreviated
-    // ptable name to its position
-    // the order of atomArray is same as order in PDB file, so index in the
-    // list will reference the atom (eg. atom a2 is second in list)
-    // { "Ag" : (1.0, 2.0, 1.0) }
-    List<Dictionary<string, Vector3>> atomArray
-        = new List<Dictionary<string, Vector3>>(); // or <Element, Vector3> ?
-
-    // bondArray is a list of all the bonds where each entry looks like
-    // { "bond order" : "atom1 atom2" }
-
-
     // temporary dictionaries for atoms and bonds, respectively
     Dictionary<string, Vector3> tempDictA;
     Dictionary<List<string>, string> tempDictB;
-    private List<string> row = new List< string> ();
+    //private List<string> row = new List< string> ();
     private string[] atom_array = new string[16];
     private string[] bond_array = new string[6];
     private List<string> line_ls = new List<string>();
@@ -51,15 +39,13 @@ public class LoadPdbData : MonoBehaviour
     private string id;
     List<string> tempListB;
 
-    public TextAsset txtFile;
-
     public Dictionary<string, Vector3> atomPosDict 
         = new Dictionary<string, Vector3>();
     public Dictionary<string, string> atomTypeDict 
         = new Dictionary<string, string>();
     public List<Dictionary<List<string>, string>> bondArray
         = new List<Dictionary<List<string>, string>>();
-    public string moleculeName; 
+    string moleculeName; 
 
     void Start()
     {
