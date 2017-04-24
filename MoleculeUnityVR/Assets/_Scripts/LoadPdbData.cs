@@ -76,7 +76,7 @@ public class LoadPdbData : MonoBehaviour
 
             while ((line = sr.ReadLine()) != null)
             {
-                if ((line.Contains("CONECT")))
+                if ((line.StartsWith("CONECT")))
                 {
                     int v = 0;
                     //Record name "CONECT"
@@ -131,7 +131,7 @@ public class LoadPdbData : MonoBehaviour
 
                     line_ls.Clear();
                 }
-                else if (line.Contains("ATOM"))
+                else if (line.StartsWith("ATOM"))
                 {
                     int v = 0;
                     //0: Record Name "ATOM"
@@ -181,9 +181,10 @@ public class LoadPdbData : MonoBehaviour
 
                     //Make array
                     atom_array = line_ls.ToArray();
-                    atom_pos = new Vector3(float.Parse(atom_array[8]), 
+                    Debug.Log(atom_array[8] + " " + atom_array[9] + " " + atom_array[10]);
+                    /*atom_pos = new Vector3(float.Parse(atom_array[8]), 
                                            float.Parse(atom_array[9]), 
-                                           float.Parse(atom_array[10]));
+                                           float.Parse(atom_array[10]));*/
                     id = "a" + a_count.ToString();
                     atomTypeDict.Add(id, atom_array[2]);
                     atomPosDict.Add(id, atom_pos);
