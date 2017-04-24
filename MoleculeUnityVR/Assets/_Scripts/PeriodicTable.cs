@@ -61,7 +61,8 @@ public class PeriodicTable : MonoBehaviour {
 
     public Dictionary<string,Element> elementMap;
 
-    //
+    // creates most of the elements on the periodic table
+    // TODO: fix some of the larger radii (>>200)
     public void CreateTable(){
 
         // Hydrogen

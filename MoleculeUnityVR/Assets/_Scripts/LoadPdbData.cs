@@ -15,13 +15,14 @@ using System.Xml;
 using System.IO;
 using System;
 
-public class loadPDBdata : MonoBehaviour
+public class LoadPdbData : MonoBehaviour
 {
 
     //public GameObject HUD; // to display info about hovered over molecule
-    //public string PDBFile = @"c:\Users\kuhnie\Downloads\text.pdb"; // file to read from
 
     static string ElementText; // eventually to be used for popup dialog
+
+    public string path;
 
     // atomArray is a list of atoms in the molecule mapping the abbreviated
     // ptable name to its position
@@ -52,23 +53,22 @@ public class loadPDBdata : MonoBehaviour
 
     public TextAsset txtFile;
 
-    public Dictionary<string, Vector3> atomPosDict = new Dictionary<string, Vector3>();
-    public Dictionary<string, string> atomTypeDict = new Dictionary<string, string>();
+    public Dictionary<string, Vector3> atomPosDict 
+        = new Dictionary<string, Vector3>();
+    public Dictionary<string, string> atomTypeDict 
+        = new Dictionary<string, string>();
     public List<Dictionary<List<string>, string>> bondArray
         = new List<Dictionary<List<string>, string>>();
     public string moleculeName; 
 
     void Start()
     {
-        string path = @"C:\Users\kuhnie\Desktop\moleculeViewer\Assets\test_pdb.txt";
+        
         print("Start: " + path);
-        //GetComponent<PeriodicTable>().CreateTable();
+        GetComponent<PeriodicTable>().CreateTable();
         Read(path);
-        //GetComponent<GenerateMolecule>().
-        //Generate(atomPosDict, atomTypeDict, bondArray, moleculeName);
-        //print(PDBFile);
-
-        //Generate();
+        GetComponent<GenerateMolecule>().
+            Generate(atomPosDict, atomTypeDict, bondArray, moleculeName);
 
     }
 
@@ -187,10 +187,16 @@ public class loadPDBdata : MonoBehaviour
 
                     //Make array
                     atom_array = line_ls.ToArray();
-                    atom_pos = new Vector3(float.Parse(atom_array[8]), float.Parse(atom_array[9]), float.Parse(atom_array[10]));
+                    atom_pos = new Vector3(float.Parse(atom_array[8]), 
+                                           float.Parse(atom_array[9]), 
+                                           float.Parse(atom_array[10]));
                     id = "a" + a_count.ToString();
                     atomTypeDict.Add(id, atom_array[2]);
                     atomPosDict.Add(id, atom_pos);
+                    // DEBUG
+                    Debug.Log(id);
+                    Debug.Log(atom_pos);
+                    Debug.Log(atom_array[2]);
                     line_ls.Clear();
                     a_count++;
                 }
@@ -199,6 +205,7 @@ public class loadPDBdata : MonoBehaviour
                     moleculeName= line.Substring(10, 50).Trim();
                 }
             }
+
             /* Debug for above outputs
             Debug.Log("Molecule Name: " + moleculeName);
             foreach (var atom in atomPosDict)
@@ -218,47 +225,5 @@ public class loadPDBdata : MonoBehaviour
             
             //row_array = row.ToArray();
         }
-        //Generate(Dictionary<string, Vector3> APD, Dictionary<String,String> ATD,
-                 //List<Dictionary<List<String>, String>>
     }
 }
-
-
-    // atoms should now be everything tagged "atom"
-
-
-    /*tempDictA = new Dictionary<string, Vector3>();
-
-    tempDictA.Add(atom.Attributes["elementType"].Value,
-                  new Vector3(float.Parse(atom.Attributes["x3"].Value),
-                              float.Parse(atom.Attributes["y3"].Value),
-                              float.Parse(atom.Attributes["z3"].Value)));
-
-    atomArray.Add(tempDictA);
-
-}
-
-// bonds is a list of everything tagged "bond"
-foreach (XmlNode bond in bonds)
-{
-
-    tempDictB = new Dictionary<string, string>();
-
-    tempDictB.Add(bond.Attributes["order"].Value,
-                  bond.Attributes["atomRefs2"].Value);
-
-    bondArray.Add(tempDictB);
-
-}
-
-}
-
-public void Generate()
-{
-
-// tempDictA - atoms { string : Vector3 }
-// tempDictB - bonds { string : string }
-
-}
-
-*/
