@@ -24,6 +24,7 @@ public class Rotator : MonoBehaviour {
     // in VR, this should somehow work with the VR sticks/controllers
     // how much of this needs to change for that to work??
     // TODO: get meshcollider to cover whole molecule so can use OnMouseDrag
+    // TODO: add zoom
     void Update(){
 
         // allows person to click anywhere and drag the object with
@@ -39,13 +40,13 @@ public class Rotator : MonoBehaviour {
         if (Input.GetMouseButtonDown(1))
             rotating = !rotating;
 
-        if(rotating){
+        if (rotating){
 
-            float rotX = Input.GetAxis("Mouse X") * speed * Mathf.Deg2Rad;
-            float rotY = Input.GetAxis("Mouse Y") * speed * Mathf.Deg2Rad;
+            float xrot = Input.GetAxis("Mouse X") * speed * Mathf.Deg2Rad;
+            float yrot = Input.GetAxis("Mouse Y") * speed * Mathf.Deg2Rad;
 
-            transform.Rotate(Vector3.up,   -rotX); // inverting x
-            transform.Rotate(Vector3.right, rotY);
+            transform.Rotate(xrot*Vector3.down,  Space.Self);
+            transform.Rotate(yrot*Vector3.right, Space.Self);
 
         }
 

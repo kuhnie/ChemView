@@ -13,6 +13,7 @@ using UnityEngine;
 using System.Text;
 using System.Xml;
 using System.IO;
+using System.Linq;
 using System;
 
 public class LoadPdbData : MonoBehaviour
@@ -34,7 +35,7 @@ public class LoadPdbData : MonoBehaviour
     private string[][] row_array;
     
     private Vector3 atom_pos;
-    private int a_count = 0;
+    private int a_count = 1;
     private int b_count = 0;
     private string id;
     List<string> tempListB;
@@ -98,20 +99,27 @@ public class LoadPdbData : MonoBehaviour
                     v += 5;
                     bond_array = line_ls.ToArray();
 
-
+                    int bond_int = 1;
 
                     foreach (string bond in bond_array)
                     {
+
                         tempListB = new List<string>();
                         tempDictB = new Dictionary<List<string>, string>();
-                        int bond_int = 0;
-                        if (bond_int > 0 && bond != "0") {
-                            tempListB.Add(bond_array[0]);
-                            tempListB.Add(bond_array[bond_int]);
+                        //int bond_int = 0;
+                        //Debug.Log(bond_array[bond_int]);
+                        if (bond_int < 6 && bond_array[bond_int] != "0") {
+
+                            tempListB.Add("a"+bond_array[1]);
+                            tempListB.Add("a"+bond_array[bond_int]);
+
+                            tempDictB.Add(tempListB, "Order");
+                            bondArray.Add(tempDictB);
+                            bond_int++;
+
                         }
-                        tempDictB.Add(tempListB, "Order");
-                        bondArray.Add(tempDictB);
-                        bond_int++;
+                        
+                        
                     }
 
 
@@ -179,10 +187,6 @@ public class LoadPdbData : MonoBehaviour
                     id = "a" + a_count.ToString();
                     atomTypeDict.Add(id, atom_array[2]);
                     atomPosDict.Add(id, atom_pos);
-                    // DEBUG
-                    Debug.Log(id);
-                    Debug.Log(atom_pos);
-                    Debug.Log(atom_array[2]);
                     line_ls.Clear();
                     a_count++;
                 }
