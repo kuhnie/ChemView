@@ -186,7 +186,7 @@ public class LoadPdbData : MonoBehaviour
                                            float.Parse(atom_array[9]), 
                                            float.Parse(atom_array[10]));
                     id = "a" + a_count.ToString();
-                    atomTypeDict.Add(id, atom_array[13]);
+                    atomTypeDict.Add(id, atom_array[2]);
                     atomPosDict.Add(id, atom_pos);
                     line_ls.Clear();
                     a_count++;
