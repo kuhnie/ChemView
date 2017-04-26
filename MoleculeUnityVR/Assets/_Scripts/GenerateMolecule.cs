@@ -6,7 +6,6 @@
 /// This class should be able to generate a 3D GameObject from a data file
 /// that is read by the Load[filetype]Data class
 
-
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,9 +28,6 @@ public class GenerateMolecule : MonoBehaviour {
                          string NAME){
 
         GameObject molecule = new GameObject();
-
-        // TODO: fix this -- see Cholesterol molecule example, off scale
-        molecule.transform.localScale = new Vector3(1f,1f,1f);
 
         molecule.name = NAME;
 
@@ -198,6 +194,12 @@ public class GenerateMolecule : MonoBehaviour {
             current.GetComponent<Renderer>().material.color = Color.gray;
 
         }
+
+        // TODO: change this to be calculated for each molecule
+        float s = 1f;
+        molecule.transform.localScale = new Vector3(s,s,s);
+
+        // TODO: move position to 0,0,0
 
     }
 

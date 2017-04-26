@@ -2,3 +2,6 @@ sceneSetups:
 - path: Assets/_Prefabs/Viewer.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/FileBrowser/Scene/tst.unity
+  isLoaded: 1
+  isActive: 0

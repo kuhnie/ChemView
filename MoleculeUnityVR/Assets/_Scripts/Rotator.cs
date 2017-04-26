@@ -21,8 +21,8 @@ public class Rotator : MonoBehaviour {
 
     // rotating the molecule
     // TODO: add VR
-    // in VR, this should somehow work with the VR sticks/controllers
-    // how much of this needs to change for that to work??
+    // in VR, this should somehow work with the sticks/controllers
+    // but how much of this needs to change for that to work??
     // TODO: get meshcollider to cover whole molecule so can use OnMouseDrag
     // TODO: add zoom
     void Update(){
@@ -40,6 +40,7 @@ public class Rotator : MonoBehaviour {
         if (Input.GetMouseButtonDown(1))
             rotating = !rotating;
 
+        // this will not work as is with SteamVR
         if (rotating){
 
             float xrot = Input.GetAxis("Mouse X") * speed * Mathf.Deg2Rad;
