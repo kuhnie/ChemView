@@ -46,7 +46,7 @@ public class LoadPdbData : MonoBehaviour
         = new Dictionary<string, string>();
     public List<Dictionary<List<string>, string>> bondArray
         = new List<Dictionary<List<string>, string>>();
-    string moleculeName; 
+    string moleculeName;
 
     void Start()
     {
@@ -174,10 +174,10 @@ public class LoadPdbData : MonoBehaviour
                     line_ls.Add(line.Substring(v, 6).Trim());
                     v += 6;
                     //13: Element Symbol
-                    line_ls.Add(line.Substring(v, 12).Trim());
-                    v += 12;
+                    line_ls.Add(line.Substring(v, 11).Trim());
+                    v += 11;
                     //14: Charge
-                    line_ls.Add(line.Substring(v, 1).Trim());
+                    line_ls.Add(line.Substring(v, 2).Trim());
 
                     //Make array
                     atom_array = line_ls.ToArray();
