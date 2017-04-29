@@ -32,7 +32,7 @@ public class LoadPdbData : MonoBehaviour
     private string[] atom_array = new string[16];
     private string[] bond_array = new string[6];
     private List<string> line_ls = new List<string>();
-    private string[][] row_array;
+    private string[] line_array;
     
     private Vector3 atom_pos;
     private int a_count = 1;
@@ -78,57 +78,26 @@ public class LoadPdbData : MonoBehaviour
             {
                 if ((line.StartsWith("CONECT")))
                 {
-                    int v = 0;
                     //Record name "CONECT"
-                    line_ls.Add(line.Substring(v, 6).Trim());
-                    v += 6;
-                    //Atom 1
-                    line_ls.Add(line.Substring(v, 5).Trim());
-                    v += 5;
-                    //Atom 2
-                    line_ls.Add(line.Substring(v, 5).Trim());
-                    v += 5;
-                    //Atom 3
-                    line_ls.Add(line.Substring(v, 5).Trim());
-                    v += 5;
-                    //Atom 4
-                    line_ls.Add(line.Substring(v, 5).Trim());
-                    v += 5;
-                    //Atom 5
-                    line_ls.Add(line.Substring(v, 5).Trim());
-                    v += 5;
-                    bond_array = line_ls.ToArray();
-
-                    int bond_int = 1;
+                    bond_array = line.Split(new[] { ' ', ';', '\t'}, StringSplitOptions.RemoveEmptyEntries);
+                    int bond_int = 0;
 
                     foreach (string bond in bond_array)
                     {
 
-                        tempListB = new List<string>();
-                        tempDictB = new Dictionary<List<string>, string>();
-                        //int bond_int = 0;
-                        //Debug.Log(bond_array[bond_int]);
-                        if (bond_int < 6 && bond_array[bond_int] != "0") {
-
-                            tempListB.Add("a"+bond_array[1]);
-                            tempListB.Add("a"+bond_array[bond_int]);
+                        if (bond_int > 0 && bond_int <= 5 && bond != "0")
+                        {
+                            tempListB = new List<string>();
+                            tempDictB = new Dictionary<List<string>, string>();
+                            tempListB.Add("a" + bond_array[1]);
+                            tempListB.Add("a" + bond_array[bond_int]);
 
                             tempDictB.Add(tempListB, "Order");
                             bondArray.Add(tempDictB);
-                            bond_int++;
-
                         }
-                        
-                        
+                        bond_int++;
+
                     }
-
-
-                    b_count++;
-                    /*for (int item =0;item < bond_array.Length; item++)
-                    {
-                        Debug.Log(bond_array[item]);
-                    }*/
-
                     line_ls.Clear();
                 }
                 else if (line.StartsWith("ATOM"))
@@ -193,7 +162,7 @@ public class LoadPdbData : MonoBehaviour
                 }
                 else if (line.Contains("HEADER"))
                 {
-                    moleculeName= line.Substring(10, 50).Trim();
+                    moleculeName = line.Substring(6, line.Length-7).Trim();
                 }
             }
 
